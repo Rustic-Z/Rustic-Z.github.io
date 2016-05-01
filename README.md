@@ -1,7 +1,9 @@
 
 ## [Rustic_z's Blog](http://rustic-z.github.io/)
 
-This is my personal blog and wiki, I will post kinds of technology articles on it.
+套用的github上另一位师兄的博客模板，基于原生bootstrap-3修改  
+markdown样式同github样式相同，简约大方  
+感谢，原博主链接[Thomas Zhao's Blog](http://www.thomaszhao.cn/)
 
 It is built based on:
 
