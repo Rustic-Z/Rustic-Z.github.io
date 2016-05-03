@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Rustic_Z's Blog
+title: Rustic_Z 's Blog
 tagline: Make the Web Better
 ---
 {% include JB/setup %}

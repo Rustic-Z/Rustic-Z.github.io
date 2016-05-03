@@ -5,7 +5,7 @@ last_updated: ""
 category : eclipse
 layout: post
 tags : [eclipse]
-published: false
+published: true
 description: "关于eclipse构建java工程的相关小笔记"
 ---
 {% include JB/setup %}
