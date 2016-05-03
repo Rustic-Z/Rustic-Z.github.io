@@ -1,10 +1,12 @@
 ---
 title: 我是模板的标题
 tagline: ""
-last_updated: null
+last_updated: ""
 category : template
 layout: post
 tags : [template, myblog]
+published: false
+description: ""
 ---
 {% include JB/setup %}
 
@@ -19,4 +21,3 @@ balabalabalbala description
 ## Header 2
 
 ### Header 3
-
