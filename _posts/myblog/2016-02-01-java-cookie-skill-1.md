@@ -1,10 +1,10 @@
 ---
-title: spring中事务管理
+title: java中操作cookie的方法
 tagline: ""
 last_updated: ""
 category : java
 layout: post
-tags : [java,spting]
+tags : [java,cookie]
 published: true
 description: ""
 ---
