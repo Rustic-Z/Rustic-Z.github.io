@@ -68,12 +68,9 @@ cookie.setDomain(".aaa.com");
 //设置cookie value 其中，cookie中的值必须全部转换为String
 Cookie cookieId = new Cookie("cookieId",
     cookiesDTO.getUserId() == null ? null : cookiesDTO.getUserId().toString());
-
 //设置cookie生效时间
 cookieId.setMaxAge(60*60*24);
-
 //设置cookie生效域
 cookieId.setDomain(Constants.REDIRECT_DOMAIN);
-
 this.getResponse().addCookie(cookieId);
 ```
