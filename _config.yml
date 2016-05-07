@@ -118,7 +118,7 @@ JB :
   comments :
     provider : duoshuo
     duoshuo:
-            short_name: thomaszhao
+            short_name: rustic
     #disqus :
     #  short_name : jekyllbootstrap
     #livefyre :
