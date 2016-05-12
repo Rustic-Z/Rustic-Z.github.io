@@ -12,6 +12,8 @@ description: ""
 
 ## java session 详解  
 
+### Session简单介绍  
+
 "一个浏览器就是一个新session,关了浏览器session就结束了"  
 
 session是在服务器端建立的，浏览器访问服务器会有一个sessionid，浏览器端通过sessionid定位服务器端的session,session的创建和销毁由服务器端控制。  
@@ -25,7 +27,19 @@ session是在服务器端建立的，浏览器访问服务器会有一个session
 
 什么情况下需要用上这种服务器端的session方式？  
 默认情况下，jsp被访问就会创建session(最开始是空的没有数据的),你的应用中的代码只是往session里面put数据。  
-最后说一下，只有服务器端才有session.客户端被存到本地的是cookie.不过安全性低。所以不能放重要的数据。  
+最后说一下，只有服务器端才有session.客户端被存到本地的是cookie.不过安全性低。所以不能放重要的数据。
+
+### Session和Cookie的主要区别  
+
+
+### session实现原理  
+
+
+### 理解javax.servlet.http.HttpSession  
+
+
+### session对象的创建和销毁时机
+
 
 ## java session 操作  
 
