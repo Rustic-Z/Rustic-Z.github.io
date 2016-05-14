@@ -37,15 +37,79 @@ session是在服务器端建立的，浏览器访问服务器会有一个session
 
 服务器创建session出来后，会把session的id号，以cookie的形式回写给客户端，这样，只要客户端的浏览器不关，再去访问服务器时，都会带着session的id号去，服务器发现客户端浏览器带sessionid过来了，就会使用内存中与之对应的session为之服务。  
 第一次访问时，服务器会创建一个新的sesion，并且把session的Id以cookie的形式发送给客户端浏览器。  
-当浏览器再次请求服务器，会把存储到cookie中的sessionId一起传递到服务器端，以获取当前会话保存在服务器端的信息。
+当浏览器再次请求服务器，会把存储到cookie中的sessionId一起传递到服务器端，以获取当前会话保存在服务器端的信息。  
+需要注意的是，session生成后，只要用户继续访问，服务器就会更新session的最后访问时间，并维护该session。用户每访问服务器一次，无论是否读写session，服务器都认为该用户的Session“活跃（active）”了一次，并更新session的最后访问时间。  
 
+### 4、session对象的创建和销毁  
 
-### 4、理解javax.servlet.http.HttpSession  
+**session对象的创建**
+在程序中第一次调用request.getSession()方法时就会创建一个新的Session，可以用isNew()方法来判断Session是不是新创建的  
+创建session:  
 
+```java
+//使用request对象的getSession()获取session，如果session不存在则创建一个
+HttpSession session = request.getSession();
+//获取session的Id
+String sessionId = session.getId();
+//判断session是不是新创建的
+if (session.isNew()) {
+   response.getWriter().print("session创建成功，session的id是："+sessionId);
+}else {
+   response.getWriter().print("服务器已经存在session，session的id是："+sessionId);
+}
+```
 
-### 5、session对象的创建和销毁时机
+**session对象的销毁**
+session对象默认30分钟没有使用，则服务器会自动销毁session，在web.xml文件中可以手工配置session的失效时间，例如：  
 
+```java
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>
 
-## java session 操作  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 
-## 服务器之间共享session的方案  
+  <!-- 设置Session的有效时间:以分钟为单位-->
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
+
+</web-app>
+```
+
+当需要在程序中手动设置Session失效时，可以手工调用session.invalidate方法，摧毁session。  
+
+```java
+HttpSession session = request.getSession();
+//手工调用session.invalidate方法，摧毁session
+session.invalidate();
+```
+
+## 二、java session 操作  
+
+```java
+               方  法  名                                                         描    述
+void setAttribute(String attribute, Object value)    //设置Session属性。value参数可以为任何Java Object。通常为Java Bean。value信息不宜过大
+String getAttribute(String attribute)                //返回Session属性
+Enumeration getAttributeNames()                      //返回Session中存在的属性名
+void removeAttribute(String attribute)               //移除Session属性
+String getId()                                       //返回Session的ID。该ID由服务器自动创建，不会重复
+long getCreationTime()                               //返回Session的创建日期。返回类型为long，常被转化为Date类型，例如：Date createTime = new Date(session.get CreationTime())
+long getLastAccessedTime()                           //返回Session的最后活跃时间。返回类型为long
+int getMaxInactiveInterval()                         //返回Session的超时时间。单位为秒。超过该时间没有访问，服务器认为该Session失效
+void setMaxInactiveInterval(int second)              //设置Session的超时时间。单位为秒
+void putValue(String attribute, Object value)        //不推荐的方法。已经被setAttribute(String attribute, Object Value)替代
+Object getValue(String attribute)                    //不被推荐的方法。已经被getAttribute(String attr)替代
+boolean isNew()                                      //返回该Session是否是新创建的
+void invalidate()                                    //使该Session失效
+```
+
+## 三、服务器之间共享session的方案  
+
+## 感谢
