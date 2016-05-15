@@ -113,12 +113,12 @@ void invalidate()                                    //使该Session失效
 # 服务器之间共享session的方案  
 
 主要有：  
-1. 客户端cookie加密;
-2. application server的session复制;
-3. 使用数据库保存session;
-4. 使用共享存储来保存session;
-5. 使用memcached来保存session;
-6. 使用terracotta来保存session;
+1. 客户端cookie加密;  
+2. application server的session复制;  
+3. 使用数据库保存session;  
+4. 使用共享存储来保存session;  
+5. 使用memcached来保存session;  
+6. 使用terracotta来保存session;  
 
 接下来将会实践一下采用memcached来共享session的方案。
 
