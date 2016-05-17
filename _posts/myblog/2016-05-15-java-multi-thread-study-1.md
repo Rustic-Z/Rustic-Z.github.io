@@ -40,6 +40,7 @@ public class TestRun {
 ```
 
 执行main方法之后观察执行结果：  
+
 ![oauth_2_0简单授权码流程图](/images/multi-thread/multi-thread-1.png)  
 
 从执行结果看出，执行次序并不是按照代码执行顺序来的。说明线程运行结果与调用顺序没有关系。
