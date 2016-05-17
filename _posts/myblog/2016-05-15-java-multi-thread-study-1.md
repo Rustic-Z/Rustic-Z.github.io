@@ -16,6 +16,7 @@ description: ""
 在java中实现多线程编程主要有两种方式：一种是继承Thread类，另一种是实现Runnable接口。  
 值得注意的是，Thread类其实是实现了Runnable接口的。  
 下面是一个简单的线程类：  
+
 ```java
 public class MyThread extends Thread {
 	@Override
@@ -27,6 +28,7 @@ public class MyThread extends Thread {
 ```
 
 用main方法调用线程测试：  
+
 ```java
 public class TestRun {
 	public static void main(String[] args) {
