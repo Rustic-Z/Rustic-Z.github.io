@@ -73,7 +73,7 @@ public class TestRun {
 
 执行结果：  
 
-![multi-thread-1](/images/multi-thread/multi-thread-2.png)  
+![multi-thread-2](/images/multi-thread/multi-thread-2.png)  
 
 另外，由于Thread.java也实现了Runnable接口，也就意味着我们可以在Thread构造函数中传入一个thread对象。  
 
@@ -89,6 +89,37 @@ Thread.java类中的start()方法并不是执行改线程，而是通知“线�
 而如果你直接调用线程对象的run()方法，则是由当前线程去执行thread类中的run()方法，是同步的，这时，方法执行顺序完全是按照代码顺序来的。  
 
 ## currentThread()方法  
+currentThread()方法可返回代码段正在被哪个线程调用的信息。首先我们来看下currentThread()方法返回的信息。
+
+```java
+public class MyThread extends Thread {
+	@Override
+	public void run() {
+		super.run();
+		System.out.println("查看currentThread方法返回的内容：" + Thread.currentThread());
+		System.out.println("MyThread线程执行结束！");
+	}
+}
+```
+
+```java
+public class TestRun {
+	public static void main(String[] args) {
+		MyThread myThread = new MyThread();
+		myThread.start();
+		System.out.println("main线程执行结束！");
+	}
+}
+```
+
+执行结果：  
+
+![multi-thread-3](/images/multi-thread/multi-thread-3.png)  
+
+其中Thread-0为线程名，5为线程优先级（没有指定的情况下，默认是5），main代表线程所在的线程组。  
+
+## isAlive()方法  
+
 
 # 线程停止  
 
