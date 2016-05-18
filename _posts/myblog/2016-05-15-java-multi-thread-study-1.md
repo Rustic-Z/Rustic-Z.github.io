@@ -119,7 +119,92 @@ public class TestRun {
 其中Thread-0为线程名，5为线程优先级（没有指定的情况下，默认是5），main代表线程所在的线程组。  
 
 ## isAlive()方法  
+方法isAlive()的功能是判断当前的线程是否处于活动状态。  
 
+创建MyThread2类，其中有一个构造函数，我们将以传入线程对象的方式来创建线程对象  
+
+```java
+public class MyThread2 extends Thread {
+	public MyThread2() {
+		System.out.println("MyThread2Object --- begin");
+		System.out.println("Thread.currentThread().getName() = " + Thread.currentThread().getName());
+		System.out.println("Thread.currentThread().isAlive() = " + Thread.currentThread().isAlive());
+		System.out.println("this.getName() = " + this.getName());
+		System.out.println("this.isAlive() = " + this.isAlive());
+		System.out.println("MyThread2Object --- end");
+	}
+
+	@Override
+	public void run() {
+		super.run();
+		System.out.println("run --- begin");
+		System.out.println("Thread.currentThread().getName() = " + Thread.currentThread().getName());
+		System.out.println("Thread.currentThread().isAlive() = " + Thread.currentThread().isAlive());
+		System.out.println("this.getName() = " + this.getName());
+		System.out.println("this.isAlive() = " + this.isAlive());
+		System.out.println("run --- end");
+	}
+}
+```
+
+调用线程  
+
+```java
+public class TestRun {
+	public static void main(String[] args) {
+		MyThread2 myThread2 = new MyThread2();
+		Thread thread = new Thread(myThread2);
+		System.out.println("main begin thread2 isAlive = " + thread.isAlive());
+		thread.setName("线程1");
+		thread.start();
+		System.out.println("main end thread2 isAlive = " + thread.isAlive());
+	}
+}
+```
+
+执行结果：  
+
+![multi-thread-4](/images/multi-thread/multi-thread-4.png)  
+
+可以看出构造函数构造对象时，这些代码是由main方法调用的。而使用this指定查看线程信息时，可以查看对象是由另外一个线程统一托管的。这里的this有一些细微的差别。  
+
+## sleep()方法  
+方法sleep()的作用是在指定的毫秒数内让当前“正在执行的线程”休眠（暂停执行）。  
+
+这个“正在执行的线程”是指this.currentThread()返回的线程。  
+
+我们来看代码：  
+
+```java
+public class MyThread extends Thread {
+	@Override
+	public void run() {
+		try {
+			System.out.println("run threadName=" + this.currentThread().getName() + " begin =" + System.currentTimeMillis());
+			Thread.sleep(2000);
+			System.out.println("run threadName=" + this.currentThread().getName() + " end =" + System.currentTimeMillis());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+```
+
+```java
+public class TestRun {
+	public static void main(String[] args) {
+		MyThread myThread = new MyThread();
+		System.out.println("begin =" + System.currentTimeMillis());
+		myThread.start();
+		System.out.println("end =" + System.currentTimeMillis());
+	}
+}
+```
+
+执行结果：  
+
+![multi-thread-5](/images/multi-thread/multi-thread-5.png)  
 
 # 线程停止  
 
