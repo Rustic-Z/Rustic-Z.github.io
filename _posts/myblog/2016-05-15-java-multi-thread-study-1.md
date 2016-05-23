@@ -207,8 +207,78 @@ public class TestRun {
 ![multi-thread-5](/images/multi-thread/multi-thread-5.png)  
 
 # 线程停止  
+线程停止由于有较多内容，决定另起篇幅进行学习记录。
 
 # 线程暂停  
+
+## suspend()方法  
+我们这里的suspend()方法可以将线程暂时停止，直到你调用函数恢复线程运行状态。
+
+## resume()方法  
+resume()方法可以将suspend()方法停止的线程恢复到运行状态。  
+
+## 线程暂停举例  
+下面举个例子进行暂停：  
+
+```java
+public class MyThread extends Thread {
+	private long i = 0L;
+	@Override
+	public void run() {
+		while(true) {
+			i++;
+		}
+	}
+
+	public long getI() {
+		return i;
+	}
+
+	public void setI(long i) {
+		this.i = i;
+	}
+}
+```  
+
+用测试类调用该线程：  
+
+```java
+public class TestRun {
+	public static void main(String[] args) {
+		try {
+			MyThread myThread = new MyThread();
+			myThread.start();
+			//让main方法睡眠5秒
+			Thread.sleep(5000);
+			//让线程停止
+			myThread.suspend();
+			System.out.println("A= " + System.currentTimeMillis() + " i = " + myThread.getI());
+			Thread.sleep(5000);
+			System.out.println("A= " + System.currentTimeMillis() + " i = " + myThread.getI());
+			//恢复线程运行状态
+			myThread.resume();
+			System.out.println("B= " + System.currentTimeMillis() + " i = " + myThread.getI());
+			Thread.sleep(5000);
+			System.out.println("B= " + System.currentTimeMillis() + " i = " + myThread.getI());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+```  
+
+运行结果如下:  
+![multi-thread-6](/images/multi-thread/multi-thread-6.png)   
+
+## 线程停止的缺点  
+从上面我们可以看到线程停止的效果，只要你部执行线程恢复的方法，那么这个被停止的线程将一直处在停止状态。  
+
+假设被执行到的方法是同步的，或者是加锁的代码块或方法。那么此时，该线程将会一直占用着这些资源，也就导致了线程死锁的出现，其他线程将无线等待该被停止线程。所以，这个方法是危险的，在应用到实际项目中，使用也需要谨慎。而从上面的例子可以看到，这两个方法也是被注解的。  
+
+那么除了线程死锁这个比较值得注意的问题外，还有另外一个问题，也就是数据不同步的问题。  
+
+我们假设想，如果一个用户操作，需要同时两个数据一起同步过来才能达到我们程序期望达到的目的。但若是在这期间，操作两个数据其中一个数据的线程暂停了。那么一个数据返回时，得不到与其对应的另一个数据。此时，就会导致数据不同步的问题出现，这也是比较值得注意的地方。比如用户登录、绑定相关操作等。  
 
 # 线程优先级  
 
