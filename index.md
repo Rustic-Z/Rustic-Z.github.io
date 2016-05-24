@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Rustic_Z 's Blog
-tagline: Make the Web Better
+tagline: 一万小时定律
 ---
 {% include JB/setup %}
 
