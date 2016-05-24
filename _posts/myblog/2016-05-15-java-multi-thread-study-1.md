@@ -272,18 +272,132 @@ public class TestRun {
 ![multi-thread-6](/images/multi-thread/multi-thread-6.png)   
 
 ## 线程停止的缺点  
+
+### 线程占用  
+
 从上面我们可以看到线程停止的效果，只要你部执行线程恢复的方法，那么这个被停止的线程将一直处在停止状态。  
 
-假设被执行到的方法是同步的，或者是加锁的代码块或方法。那么此时，该线程将会一直占用着这些资源，也就导致了线程死锁的出现，其他线程将无线等待该被停止线程。所以，这个方法是危险的，在应用到实际项目中，使用也需要谨慎。而从上面的例子可以看到，这两个方法也是被注解的。  
+假设被执行到的方法是同步的，或者是`加锁的代码块或方法`。那么此时，该线程将会一直`占用`着这些资源，也就导致了`线程死锁`的出现，其他线程将无限等待该被停止线程。所以，这个方法是危险的，在应用到实际项目中，使用也需要谨慎。而从上面的例子可以看到，这两个方法也是被注解的。  
 
-那么除了线程死锁这个比较值得注意的问题外，还有另外一个问题，也就是数据不同步的问题。  
+### 不同步  
+
+那么除了线程死锁这个比较值得注意的问题外，还有另外一个问题，也就是`数据不同步`的问题。  
 
 我们假设想，如果一个用户操作，需要同时两个数据一起同步过来才能达到我们程序期望达到的目的。但若是在这期间，操作两个数据其中一个数据的线程暂停了。那么一个数据返回时，得不到与其对应的另一个数据。此时，就会导致数据不同步的问题出现，这也是比较值得注意的地方。比如用户登录、绑定相关操作等。  
 
 # 线程优先级  
 
-# 守护线程  
+在操作系统中，线程可以划分优先级，优先级较高的线程得到的CPU资源较多，也就是CPU优先执行优先级较高的线程对象中的任务。  
 
-# 未完待续  
+在java中，线程的优先级分为1~10这10个等级，如果小于1或大于10，则JDK抛出异常throw new IllegalArgumentException().  
+
+## 线程优先级示例：  
+
+```java
+public class MyThread1 extends Thread {
+	@Override
+	public void run() {
+		long beginTime = System.currentTimeMillis();
+		long result = 0;
+		for (int j = 0; j < 10; j++) {
+			for (int i = 0; i < 5000; i++) {
+				Random random = new Random();
+				random.nextInt();
+				result = result + i;
+			}
+		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("##### thread 1 use time = " + (endTime - beginTime));
+	}
+}
+```  
+
+```java
+public class MyThread2 extends Thread {
+	@Override
+	public void run() {
+		long beginTime = System.currentTimeMillis();
+		long result = 0;
+		for (int j = 0; j < 10; j++) {
+			for (int i = 0; i < 5000; i++) {
+				Random random = new Random();
+				random.nextInt();
+				result = result + i;
+			}
+		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("***** thread 2 use time = " + (endTime - beginTime));
+	}
+}
+```  
+
+测试线程：  
+
+```java
+public class TestRun {
+	public static void main(String[] args) {
+		for (int i = 0; i < 5; i++) {
+			MyThread1 thread1 = new MyThread1();
+			thread1.setPriority(10);
+			thread1.start();
+			MyThread2 thread2 = new MyThread2();
+			thread2.setPriority(1);
+			thread2.start();
+		}
+	}
+}
+```  
+
+运行结果如下：  
+![multi-thread-7](/images/multi-thread/multi-thread-7.png)  ![multi-thread-8](/images/multi-thread/multi-thread-8.png)  ![multi-thread-9](/images/multi-thread/multi-thread-9.png)  
+
+运行结果如上，我们可以看到优先级高的线程其运行结果总是比优先级低的线程较快出现，也就是较先执行。  
+
+## 线程优先级具有继承性  
+在java中，线程的优先级具有继承性，比如A线程启动B线程，则B线程的优先级与A是一样的。  
+
+# 守护线程  
+在java线程中有两种线程，一种是用户线程，另外一种是守护（Daemon）线程。  
+
+什么是守护线程？守护线程是一种特殊的线程，当进程中不存在非守护线程，也就是普通线程时，则守护线程将自动销毁。典型的守护线程就是垃圾回收线程，当进程中没有非守护线程了，则垃圾回收线程也就没有存在的必要了，将自动销毁。  
+
+```java
+public class MyThread extends Thread {
+	private int i = 0;
+	@Override
+	public void run() {
+			try {
+				while (true) {
+					i++;
+					System.out.println("i = " + i);
+					Thread.sleep(1000);
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+}
+```  
+
+```java
+public class TestRun {
+	public static void main(String[] args) {
+		try {
+			MyThread thread = new MyThread();
+			thread.setDaemon(true);  //设置thread线程守护当前线程
+			thread.start();
+			Thread.sleep(5000);
+			System.out.println("当前线程结束了，守护线程也没有存在的必要了！");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+```  
+
+运行结果如下：  
+![multi-thread-10](/images/multi-thread/multi-thread-10.png)  
 
 # 感谢
