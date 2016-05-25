@@ -51,8 +51,80 @@ Docker 利用容器来运行应用。
 
 其实`Docker`的理念感觉与`git`很类似。`git`管理的是文件，而`Docker`管理的是容器镜像。  
 
-# docker安装  
+# `Ubuntu`中安装`Docker`  
 
-# 未完待续  
+`docker`目前只支持安装在`64位`的系统环境中，并且要求内核版本不低于 3.10。  
+
+## 准备工作  
+查看内核版本详细信息：  
+
+```shell
+root@iZ28fa5s0q4Z:~# uname -a
+Linux iZ28fa5s0q4Z 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+```  
+
+`docker`目前支持的最低`Ubuntu`版本为`12.04 LTS`。  
+
+安装apt-transport-https：  
+
+```shell
+root@iZ28fa5s0q4Z:~# apt-get install apt-transport-https ca-certificates
+```  
+
+添加源的gpg密钥：  
+
+```shell
+root@iZ28fa5s0q4Z:~# apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+```  
+
+获取当前操作系统的代号：  
+
+```shell
+root@iZ28fa5s0q4Z:~# lsb_release -c
+Codename:	trusty
+```  
+
+接着添加`docker`的官方apt软件源：  
+
+```shell
+root@iZ28fa5s0q4Z:~# cat <<EOF > /etc/apt/sources.list.d/docker.list
+> deb https://apt.dockerproject.org/repo ubuntu-trusty main
+> EOF
+```  
+
+上面的`ubuntu-trusty`需要对应的改成自己系统的版本代号。  
+
+更新软件包缓存：  
+
+```shell
+root@iZ28fa5s0q4Z:~# apt-get update
+```
+
+## 预安装  
+为了让`docker`使用aufs存储，推荐安装`linux-image-extra`软件包：  
+
+```shell
+root@iZ28fa5s0q4Z:~# apt-get install -y linux-image-extra-$(uname -r)
+```  
+
+安装`apparmor`，apparmor是Linux内核的一个安全模块：  
+
+```shell
+root@iZ28fa5s0q4Z:~# apt-get install apparmor
+```  
+
+## 安装`Docker`  
+在成功添加源之后，就可以安装最新版本的`Docker`了，软件包名称是`docker-engine`。  
+
+```shell
+root@iZ28fa5s0q4Z:~# apt-get install -y docker-engine
+```  
+
+检查`Docker`版本，若出现类似版本信息，则说明已经安装成功了。  
+
+```shell
+root@iZ28fa5s0q4Z:~# docker -v
+Docker version 1.11.1, build 5604cbe
+```  
 
 # 感谢  
