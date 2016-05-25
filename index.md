@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Rustic_Z 's Blog
-tagline: 一万小时定律
+tagline: 兴趣是最好的老师
 ---
 {% include JB/setup %}
 
