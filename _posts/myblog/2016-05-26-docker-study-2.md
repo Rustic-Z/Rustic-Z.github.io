@@ -95,3 +95,31 @@ ubuntu              12.04               2bffcdf4b693        3 weeks ago         
 root@iZ28fa5s0q4Z:~# docker run -t -i mydocker/ubuntu:rvm
 root@1ac4e34ffaa9:/#
 ```
+
+# 利用`Dockerfile`来创建镜像  
+我们在创建一个镜像时可以使用`docker build`来创建一个新的镜像，在这之前，我们需要创建一个`Dockerfile`，来制定如何创建这个镜像。  
+
+我们新建一个存放`Dockerfile`的目录以及`Dockerfile`文件：  
+
+```shell
+root@iZ28fa5s0q4Z:~# mkdir dockerfile
+root@iZ28fa5s0q4Z:~# cd dockerfile/
+root@iZ28fa5s0q4Z:~/dockerfile# touch Dockerfile
+```  
+
+编辑`Dockerfile`中的信息：  
+
+```shell
+# This is a comment
+FROM ubuntu:14.04
+MAINTAINER rustic <rusticzc@gmail.com>
+RUN apt-get -qq update
+RUN apt-get -qqy install ruby ruby-dev
+RUN gem install sinatra
+```  
+
+其中：  
+* 使用`#`来注释  
+* `FROM`命令告诉`Docker`使用哪个镜像作为基础  
+* 下面一行是维护者的信息  
+* `RUN`开头的命令会在创建镜像时，启动容器来执行命令并提交，知道运行完所有`RUN`返回最后一个提交后的镜像`id`  
