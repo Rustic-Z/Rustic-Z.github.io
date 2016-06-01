@@ -96,7 +96,7 @@ root@iZ28fa5s0q4Z:~# docker run -t -i mydocker/ubuntu:rvm
 root@1ac4e34ffaa9:/#
 ```
 
-# 利用`Dockerfile`来创建镜像  
+# 利用Dockerfile来创建镜像  
 我们在创建一个镜像时可以使用`docker build`来创建一个新的镜像，在这之前，我们需要创建一个`Dockerfile`，来制定如何创建这个镜像。  
 
 我们新建一个存放`Dockerfile`的目录以及`Dockerfile`文件：  
@@ -114,7 +114,7 @@ root@iZ28fa5s0q4Z:~/dockerfile# touch Dockerfile
 FROM ubuntu:14.04
 MAINTAINER rustic <rusticzc@gmail.com>
 RUN apt-get -qq update
-RUN apt-get -qqy install ruby ruby-dev
+RUN apt-get -qqy install ruby
 RUN gem install sinatra
 ```  
 
@@ -123,3 +123,109 @@ RUN gem install sinatra
 * `FROM`命令告诉`Docker`使用哪个镜像作为基础  
 * 下面一行是维护者的信息  
 * `RUN`开头的命令会在创建镜像时，启动容器来执行命令并提交，知道运行完所有`RUN`返回最后一个提交后的镜像`id`  
+
+Dockerfile的内容完全可以我们自己定义，根据不同的业务场景可以通过不同的Dockerfile来初始化镜像。运行如下命令来创建一个镜像：  
+
+```shell
+root@iZ28fa5s0q4Z:~# cd dockerfile/
+root@iZ28fa5s0q4Z:~/dockerfile# pwd
+/root/dockerfile
+root@iZ28fa5s0q4Z:~/dockerfile# docker build -t="mydocker/ubuntu:dockerfile" .
+```  
+
+其中`-t`来表示新镜像所在仓库及标签，`.`表示当前文件夹，这里也可以具体指定某个特定的Dockerfile。  
+
+用新镜像启动一个容器：  
+
+```shell
+root@iZ28fa5s0q4Z:~/dockerfile# docker run -t -i mydocker/ubuntu:dockerfile
+root@c9f7ea11f031:/#
+```  
+
+# docker镜像基本操作  
+
+**修改镜像标签**  
+我们可以用`docker tag`来修改镜像标签：  
+
+```shell
+root@iZ28fa5s0q4Z:~/dockerfile# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mydocker/ubuntu     dockerfile          6c985d63e787        26 minutes ago      247.7 MB
+mydocker/ubuntu     rvm                 e28b49754b4a        5 days ago          229.7 MB
+ubuntu              14.04               90d5884b1ee0        4 weeks ago         188 MB
+ubuntu              12.04               2bffcdf4b693        4 weeks ago         138.5 MB
+root@iZ28fa5s0q4Z:~/dockerfile# docker tag 6c985d63e787 mydocker/ubuntu:Dockerfile
+root@iZ28fa5s0q4Z:~/dockerfile# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mydocker/ubuntu     Dockerfile          6c985d63e787        27 minutes ago      247.7 MB
+mydocker/ubuntu     dockerfile          6c985d63e787        27 minutes ago      247.7 MB
+mydocker/ubuntu     rvm                 e28b49754b4a        5 days ago          229.7 MB
+ubuntu              14.04               90d5884b1ee0        4 weeks ago         188 MB
+ubuntu              12.04               2bffcdf4b693        4 weeks ago         138.5 MB
+```  
+
+像上面，我们指定某个镜像的id，然后重命名标签。执行完之后，我们可以看到同一个id的镜像对应着两个标签。  
+
+**上传镜像到运城仓库**  
+
+```shell
+root@iZ28fa5s0q4Z:~/dockerfile# docker push mydocker/ubuntu
+```  
+
+**保存镜像到本地**  
+
+```shell
+root@iZ28fa5s0q4Z:~/dockerfile# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mydocker/ubuntu     Dockerfile          6c985d63e787        27 minutes ago      247.7 MB
+mydocker/ubuntu     dockerfile          6c985d63e787        27 minutes ago      247.7 MB
+mydocker/ubuntu     rvm                 e28b49754b4a        5 days ago          229.7 MB
+ubuntu              14.04               90d5884b1ee0        4 weeks ago         188 MB
+ubuntu              12.04               2bffcdf4b693        4 weeks ago         138.5 MB
+root@iZ28fa5s0q4Z:~/dockerfile# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mydocker/ubuntu     Dockerfile          6c985d63e787        35 minutes ago      247.7 MB
+mydocker/ubuntu     dockerfile          6c985d63e787        35 minutes ago      247.7 MB
+mydocker/ubuntu     rvm                 e28b49754b4a        5 days ago          229.7 MB
+ubuntu              14.04               90d5884b1ee0        4 weeks ago         188 MB
+ubuntu              12.04               2bffcdf4b693        4 weeks ago         138.5 MB
+root@iZ28fa5s0q4Z:~/dockerfile# docker save -o ubuntu_14.04_rvm.tar mydocker/ubuntu:rvm
+root@iZ28fa5s0q4Z:~/dockerfile# ls
+Dockerfile  ubuntu_14.04_rvm.tar
+```  
+
+**导入镜像到本地仓库**  
+
+```shell
+root@iZ28fa5s0q4Z:~/dockerfile# docker load --input ubuntu_14.04_rvm.tar
+```  
+
+**移除本地镜像**  
+
+```shell
+root@iZ28fa5s0q4Z:~# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mydocker/ubuntu     Dockerfile          6c985d63e787        2 hours ago         247.7 MB
+mydocker/ubuntu     dockerfile          6c985d63e787        2 hours ago         247.7 MB
+mydocker/ubuntu     rvm                 e28b49754b4a        5 days ago          229.7 MB
+ubuntu              14.04               90d5884b1ee0        4 weeks ago         188 MB
+ubuntu              12.04               2bffcdf4b693        4 weeks ago         138.5 MB
+root@iZ28fa5s0q4Z:~# docker rmi mydocker/ubuntu:Dockerfile
+Untagged: mydocker/ubuntu:Dockerfile
+root@iZ28fa5s0q4Z:~# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mydocker/ubuntu     dockerfile          6c985d63e787        2 hours ago         247.7 MB
+mydocker/ubuntu     rvm                 e28b49754b4a        5 days ago          229.7 MB
+ubuntu              14.04               90d5884b1ee0        4 weeks ago         188 MB
+ubuntu              12.04               2bffcdf4b693        4 weeks ago         138.5 MB
+```  
+
+**清理未打过标签的本地镜像**  
+
+`docker images`可以列出本地所有的镜像，其中会有一部分中间状态的未打过标签的镜像，大量占据着磁盘空间。  
+
+那么我们可以用如下命令清理未打过标签的本地镜像：  
+
+```shell
+root@iZ28fa5s0q4Z:~# docker rmi $(docker images -q -f "dangling=true")
+```  
