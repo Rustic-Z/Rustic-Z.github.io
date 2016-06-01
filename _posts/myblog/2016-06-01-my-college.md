@@ -12,14 +12,14 @@ description: ""
 
 大学算是毕业了吧～～～  
 
-![大学1](http://rustic.oss-cn-qingdao.aliyuncs.com/2016-06-01%2020-28-52%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)  
+![大学1](http://rustic.img-cn-qingdao.aliyuncs.com/DSC_2901.JPG@888w)  
 
-![大学2](http://rustic.oss-cn-qingdao.aliyuncs.com/2016-06-01%2020-30-55%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)  
+![大学2](http://rustic.img-cn-qingdao.aliyuncs.com/2016-06-01%2020-30-55%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png@888w)  
 
-![大学3](http://rustic.oss-cn-qingdao.aliyuncs.com/CIMG1662.JPG)  
+![大学3](http://rustic.img-cn-qingdao.aliyuncs.com/2016-06-01%2020-28-52%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png@888w)  
 
-![大学4](http://rustic.oss-cn-qingdao.aliyuncs.com/DSC_2901.JPG)  
+![大学4](http://rustic.img-cn-qingdao.aliyuncs.com/CIMG1662.JPG@888w)  
 
-![大学5](http://rustic.oss-cn-qingdao.aliyuncs.com/DSC_3119.JPG)  
+![大学5](http://rustic.img-cn-qingdao.aliyuncs.com/DSC_3119.JPG@888w)  
 
-![大学6](http://rustic.oss-cn-qingdao.aliyuncs.com/P60527-151208.jpg)  
+![大学6](http://rustic.img-cn-qingdao.aliyuncs.com/P60527-151208.jpg@888w)  
