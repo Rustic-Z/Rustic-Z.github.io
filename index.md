@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Rustic_Z 's Blog
-tagline: 兴趣是最好的老师
+tagline: 做一名不浮躁的码农
 ---
 {% include JB/setup %}
 
-## Latest Posts
+## 最近更新
 
 <ul class="posts">
   {% for post in site.posts %}
