@@ -5,7 +5,7 @@ tagline: 做一名不浮躁的码农
 ---
 {% include JB/setup %}
 
-## 最近更新
+## Latest Posts
 
 <ul class="posts">
   {% for post in site.posts %}
