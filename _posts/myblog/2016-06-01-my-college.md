@@ -31,5 +31,3 @@ description: ""
 ![大学9](http://rustic.img-cn-qingdao.aliyuncs.com/DSC_3128.JPG@888w)  
 
 ![大学10](http://rustic.img-cn-qingdao.aliyuncs.com/DSC_3140.JPG@888w)  
-
-未完待续...
