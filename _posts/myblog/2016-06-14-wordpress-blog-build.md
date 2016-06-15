@@ -11,8 +11,8 @@ description: ""
 {% include JB/setup %}
 
 主要参考文档：  
-<https://mos.meituan.com/library/19/how-to-install-lnmp-on-centos6/>  
-<https://mos.meituan.com/library/16/how-to-install-wordpress-on-centos6/>  
+[在CentOS 6上搭建LNMP环境](https://mos.meituan.com/library/19/how-to-install-lnmp-on-centos6/)  
+[在CentOS 6上安装WordPress](https://mos.meituan.com/library/16/how-to-install-wordpress-on-centos6/)  
 
 # 安装nginx  
 
