@@ -10,6 +10,8 @@ description: ""
 ---
 {% include JB/setup %}
 
+[参考文档1](https://segmentfault.com/a/1190000002975306)  
+
 命令行卸载软件包:  
 
 ```shell
