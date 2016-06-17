@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Rustic_Z 's Blog
-tagline: 做一名不浮躁的码农
+tagline: 南柯一梦
 ---
 {% include JB/setup %}
 
