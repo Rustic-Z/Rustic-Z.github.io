@@ -16,4 +16,11 @@ description: ""
 
 ```shell
 root@iZ28fa5s0q4Z:~# apt-get autoremove softwareName
-```
+```  
+
+查询文件或文件夹的磁盘使用空间:  
+
+```shell
+du -h --max-depth=1 work/testing
+du -h --max-depth=1 work/testing/*
+```  
