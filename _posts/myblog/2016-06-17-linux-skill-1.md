@@ -24,3 +24,9 @@ root@iZ28fa5s0q4Z:~# apt-get autoremove softwareName
 du -h --max-depth=1 work/testing
 du -h --max-depth=1 work/testing/*
 ```  
+
+将某个文件下下的所有文件打包成zip文件:  
+
+```shell
+[root@iZ23w59no07Z themes]# zip -r wp-theme.zip wp-theme/*
+```  
