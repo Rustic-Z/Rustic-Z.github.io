@@ -30,3 +30,29 @@ du -h --max-depth=1 work/testing/*
 ```shell
 [root@iZ23w59no07Z themes]# zip -r wp-theme.zip wp-theme/*
 ```  
+
+## 更换ubuntu软件源：  
+
+备份现有软件源：  
+
+```shell
+sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
+```  
+
+选择最快的镜像服务器：  
+
+```shell
+sudo wget -O /etc/apt/sources.list http://ubuntu9.com/topmirror/sourceslist/topfast
+```  
+
+选择你地域内 (国家) 的最快的镜像服务器:  
+
+```shell
+sudo wget -O /etc/apt/sources.list http://ubuntu9.com/topmirror/sourceslist/topnear
+```  
+
+选择最稳定的镜像服务器:  
+
+```shell
+sudo wget -O /etc/apt/sources.list http://ubuntu9.com/topmirror/sourceslist/topstable
+```  
