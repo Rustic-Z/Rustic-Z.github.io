@@ -39,20 +39,5 @@ du -h --max-depth=1 work/testing/*
 sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 ```  
 
-选择最快的镜像服务器：  
-
-```shell
-sudo wget -O /etc/apt/sources.list http://ubuntu9.com/topmirror/sourceslist/topfast
-```  
-
-选择你地域内 (国家) 的最快的镜像服务器:  
-
-```shell
-sudo wget -O /etc/apt/sources.list http://ubuntu9.com/topmirror/sourceslist/topnear
-```  
-
-选择最稳定的镜像服务器:  
-
-```shell
-sudo wget -O /etc/apt/sources.list http://ubuntu9.com/topmirror/sourceslist/topstable
-```  
+更换网易维护的软件源，根据不同的系统选择`sources.list`文件替换本机的文件。  
+[网易ubuntu软件源帮助中心](http://mirrors.163.com/.help/ubuntu.html)  
