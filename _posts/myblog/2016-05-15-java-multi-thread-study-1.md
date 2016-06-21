@@ -10,6 +10,8 @@ description: ""
 ---
 {% include JB/setup %}
 
+__外练互斥，内修可见__
+
 # java多线程的使用  
 
 在java中实现多线程编程主要有两种方式：一种是继承Thread类，另一种是实现Runnable接口。  
