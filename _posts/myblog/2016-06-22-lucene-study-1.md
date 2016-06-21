@@ -5,7 +5,7 @@ last_updated: ""
 category : lucene
 layout: post
 tags : [lucene]
-published: true
+published: false
 description: ""
 ---
 {% include JB/setup %}
