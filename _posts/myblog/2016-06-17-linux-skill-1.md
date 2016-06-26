@@ -41,3 +41,9 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 
 更换网易维护的软件源，根据不同的系统选择`sources.list`文件替换本机的文件。  
 [网易ubuntu软件源帮助中心](http://mirrors.163.com/.help/ubuntu.html)  
+
+由于没有公钥，无法验证下列签名： NO_PUBKEY 8D5A09DC9B929006  
+
+```shell
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8D5A09DC9B929006
+```  
