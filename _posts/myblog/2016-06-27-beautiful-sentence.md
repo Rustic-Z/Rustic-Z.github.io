@@ -17,3 +17,7 @@ description: ""
 "世界上最廉价的东西是什么？"  "一惊一乍和形容词"  
 
 要抱着虽败犹荣，残叶如夏花的心做任何想做的。  
+
+又一天加班到深夜...  
+
+![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)  
