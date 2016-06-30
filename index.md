@@ -13,8 +13,5 @@ tagline: 南柯一梦
   {% endfor %}
 </ul>
 
-<ul class="imgs">
-  <!-- <img src="http://rustic.img-cn-qingdao.aliyuncs.com/myCollege/IMG_20160610_143824.jpg@888w"  alt="上犹陡水湖 绿水青山" /> -->
-  <h2>我爱绿水</h2>
-  ![上犹陡水湖 绿水青山](http://rustic.img-cn-qingdao.aliyuncs.com/myCollege/IMG_20160610_143824.jpg@888w)
-</ul>
+## 我爱绿水  
+![上犹陡水湖 绿水青山](http://rustic.img-cn-qingdao.aliyuncs.com/myCollege/IMG_20160610_143824.jpg@888w)  
