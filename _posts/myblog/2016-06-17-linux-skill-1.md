@@ -47,3 +47,29 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 ```shell
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8D5A09DC9B929006
 ```  
+
+新建用户组：  
+
+```shell
+root@iZ28fa5s0q4Z:~# addgroup login
+```  
+
+新建用户：  
+
+```shell
+root@iZ28fa5s0q4Z:~# useradd -d /home/rustic -s /bin/bash -m rustic
+```  
+
+其中，`-d`指定用户的主目录，`-s`指定用户的shell，`-m`表示如果该目录不存在，则创建该目录。  
+
+给用户设置密码：  
+
+```shell
+root@iZ28fa5s0q4Z:/home# passwd rustic
+```  
+
+将用户添加至用户组中：  
+
+```shell
+root@iZ28fa5s0q4Z:/home# usermod -a -G login rustic
+```  
