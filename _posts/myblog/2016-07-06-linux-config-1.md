@@ -110,6 +110,12 @@ AllowUsers rustic
 
 ```shell
 [root@iZ23w59no07Z ~] server sshd restart
-``` 
+```  
+
+最后，尝试通过指定端口及用户登录服务器:  
+
+```shell
+rustic@rustic:~$ ssh -p 23333 rustic@114.215.83.238
+```  
 
 ## 感谢
