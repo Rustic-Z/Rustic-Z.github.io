@@ -7,7 +7,7 @@ tagline: 南柯一梦
 
 ## Google Doodle -- first-day-of-summer-2016  
 
-![google doodles](https://www.google.com/logos/doodles/2016/first-day-of-summer-2016-northern-hemisphere-5669295896920064-hp2x.gif =888×400)  
+![google doodles](https://www.google.com/logos/doodles/2016/first-day-of-summer-2016-northern-hemisphere-5669295896920064-hp2x.gif)  
 
 ## Latest Posts  
 
