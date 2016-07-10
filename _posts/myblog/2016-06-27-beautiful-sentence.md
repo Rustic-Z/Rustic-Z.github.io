@@ -20,4 +20,8 @@ description: ""
 
 又一天加班到深夜...  
 
+2016-07-10  
+
+盖茨比深切地体会到财富是怎样令青春和神秘永远常驻，体会到一身身华服如何让人保持青春靓丽，体会到黛西像白银一样闪亮耀眼，在穷人激烈的生存斗争之上，安然而高傲地活着...  
+
 ![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)  
