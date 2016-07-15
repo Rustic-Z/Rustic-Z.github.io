@@ -2,9 +2,9 @@
 title: git pull 与 git pull --rebase
 tagline: ""
 last_updated: ""
-category : java
+category : git
 layout: post
-tags : [java,Multi-thread]
+tags : [git]
 published: true
 description: ""
 ---

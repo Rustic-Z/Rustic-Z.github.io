@@ -14,6 +14,8 @@ description: ""
 
 ![大学1](http://rustic.img-cn-qingdao.aliyuncs.com/DSC_2901.JPG@888w)  
 
+![大学11](http://rustic.img-cn-qingdao.aliyuncs.com/myCollege/mmexport1465720564360.jpg@888w)  
+
 ![大学2](http://rustic.img-cn-qingdao.aliyuncs.com/2016-06-01%2020-30-55%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png@888w)  
 
 ![大学3](http://rustic.img-cn-qingdao.aliyuncs.com/2016-06-01%2020-28-52%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png@888w)  
