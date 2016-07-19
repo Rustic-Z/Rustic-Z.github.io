@@ -30,9 +30,14 @@ description: ""
 Your browser does not support the audio tag.
 </audio>  
 
-<style>
+<!-- <style>
 <bgsound src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" loop="-1">
-</style>
+</style> -->
+<p><a href="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3">Play Song</a></p>
+<p><a href="http://lxqncdn.miaopai.com/stream/BvmaXK2X49guVi4ehlOjjQ__.mp4">Play Text</a></p>
+
+<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
+
 <!-- <bgsound src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3"> -->
 
 <!-- ![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)   -->
