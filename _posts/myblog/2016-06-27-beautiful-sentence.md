@@ -28,6 +28,8 @@ description: ""
 
 <audio src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" controls="controls">
 Your browser does not support the audio tag.
-</audio>
+</audio>  
+
+<bgsound src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3">
 
 <!-- ![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)   -->
