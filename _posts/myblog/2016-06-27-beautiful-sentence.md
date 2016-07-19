@@ -29,16 +29,8 @@ description: ""
 <audio src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" controls="controls">
 Your browser does not support the audio tag.
 </audio>  
+<!-- <embed src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" autostart=true hidden=true loop=true> -->
 
-<!-- <style>
-<bgsound src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" loop="-1">
-</style> -->
-<!-- <p><a href="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3">Play Song</a></p>
-<p><a href="http://lxqncdn.miaopai.com/stream/BvmaXK2X49guVi4ehlOjjQ__.mp4">Play Text</a></p>
-
-<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script> -->
-<embed src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" autostart=true hidden=true loop=true>
-
-<!-- <bgsound src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3"> -->
+<bgsound src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3">
 
 <!-- ![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)   -->
