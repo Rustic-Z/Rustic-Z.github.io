@@ -26,4 +26,8 @@ description: ""
 
 与其毫无意义的消磨时光，不如点一盏灯静心看书，让阅读成为你的习惯...  
 
-![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)  
+<audio src="http://rustic.oss-cn-qingdao.aliyuncs.com/music/Eagles_Doolin_Dalton.mp3" controls="controls">
+Your browser does not support the audio tag.
+</audio>
+
+<!-- ![beautiful_photo_2](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/content22545.jpg@888w)   -->
