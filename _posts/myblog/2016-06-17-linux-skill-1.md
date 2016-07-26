@@ -73,3 +73,11 @@ root@iZ28fa5s0q4Z:/home# passwd rustic
 ```shell
 root@iZ28fa5s0q4Z:/home# usermod -a -G login rustic
 ```  
+
+查询某文件指定字符串上下n行的内容:  
+
+```shell
+grep -n -A 100 -B 100 "18858568688" catalina.out | more
+```  
+
+其中`-A`指定向下多少行，`-B`指定向上多少行，后面引号内的内容是指定查询的内容。  
