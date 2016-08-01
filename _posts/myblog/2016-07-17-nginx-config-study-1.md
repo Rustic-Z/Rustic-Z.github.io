@@ -5,7 +5,7 @@ last_updated: ""
 category : nginx
 layout: post
 tags : [nginx]
-published: trus
+published: true
 description: ""
 ---
 {% include JB/setup %}
