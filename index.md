@@ -9,7 +9,9 @@ tagline: 南柯一梦
 <!-- ![google doodles](http://rustic.img-cn-qingdao.aliyuncs.com/gif/summer-solstice-strawberry-moon-5156509353771008-hp2x.gif@600w)   -->
 <!-- <img src="http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/mmexport1467998694280.jpg@600w" alt="纪念"/> -->
 
-![纪念](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/mmexport1467998694280.jpg@600w)  
+<head><style>img{max-width:320px !important;}</style></head><!-- 屏幕自适应设置 -->
+<img src="http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/mmexport1467998694280.jpg@600w" alt="纪念"/>
+<!-- ![纪念](http://rustic.img-cn-qingdao.aliyuncs.com/beautifulPhoto/mmexport1467998694280.jpg@600w)   -->
 
 ## Learning...   
 
