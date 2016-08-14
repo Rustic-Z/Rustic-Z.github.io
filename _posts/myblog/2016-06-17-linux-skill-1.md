@@ -18,6 +18,13 @@ description: ""
 root@iZ28fa5s0q4Z:~# apt-get autoremove softwareName
 ```  
 
+ubuntu下卸载软件:  
+
+```shell
+zhangchao@zhangchao:~$ dpkg --list <packegename>  //查找相关软件包
+zhangchao@zhangchao:~$ sudo apt-get --purge remove <packegename>  //卸载某软件包
+```  
+
 查询文件或文件夹的磁盘使用空间:  
 
 ```shell
