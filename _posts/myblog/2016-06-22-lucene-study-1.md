@@ -5,9 +5,11 @@ last_updated: ""
 category : lucene
 layout: post
 tags : [lucene]
-published: false
+published: true
 description: ""
 ---
 {% include JB/setup %}
 
-[lucene_study](/study/lucene的应用.pdf)
+<center><embed src="/study/lucene的应用.pdf" width="850" height="600"></center>
+
+<!-- [lucene_study](/study/lucene的应用.pdf) -->
