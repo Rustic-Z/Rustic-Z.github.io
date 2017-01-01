@@ -5,7 +5,7 @@ last_updated: ""
 category : life
 layout: post
 tags : [life]
-published: false
+published: true
 description: ""
 ---
 {% include JB/setup %}
