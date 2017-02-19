@@ -15,7 +15,7 @@ description: ""
 <https://imququ.com/post/letsencrypt-certificate.html>  
 
 ## 前言  
-随着HTTPS的不断普及以及各个厂家的浏览器对
+随着HTTPS的不断普及以及各个厂家的浏览器对HTTP网站的各种安全警告,HTTPS似乎已经成了网站标配.而对于个人网站来说,付费的HTTPS证书似乎并不是很适合,最近网上看到了不少关于`Let's Encrypt`的HTTPS认证,于是就自己也实操了一番之后,根据上述参考的网站把内容重新整理了一下,以做为自己的一个学习笔记.  
 
 ## 生成 Let's Encrypt 证书  
 
@@ -58,8 +58,8 @@ webroot-path=/usr/share/nginx/ssl
 **4、配置nginx以支持Let's Encrypt验签**  
 
 上面那步已经在`yourdomain.com.conf`中设置了`webroot-path`为`/usr/share/nginx/ssl`,这是因为,我在nginx应用中只是把nginx作为一个请求分发的服务器,根据不同域名做本地的端口跳转到各个tomcat中.所以,需要让Let's Encrypt直接访问域名根目录下的校验文件有两种办法:  
-1、在tomcat部署的每个应用中放置校验文件，即根据不同域名对应的webapp设置不同的根目录到对应的`webroot-path`中，这样的话，配置不统一，也不好维护.  
-2、第二种也就是现在用的这种，在nginx的server配置中将Let's Encrypt校验的域名访问路径在跳转tomcat应用之前重定向到一个固定的路径下，也就是上文中设置的`/usr/share/nginx/ssl`了，这样的话，当我们部署不同的应用时，只要保证nginx的ssl认证配置有效就ok了。配置文件如下:  
+1、在tomcat部署的每个应用中放置校验文件,即根据不同域名对应的webapp设置不同的根目录到对应的`webroot-path`中,这样的话,配置不统一,也不好维护.  
+2、第二种也就是现在用的这种,在nginx的server配置中将Let's Encrypt校验的域名访问路径在跳转tomcat应用之前重定向到一个固定的路径下,也就是上文中设置的`/usr/share/nginx/ssl`了,这样的话,当我们部署不同的应用时,只要保证nginx的ssl认证配置有效就ok了.配置文件如下:  
 
 ```  
 server {
@@ -79,7 +79,7 @@ server {
 
 将`http://www.yourdomain.com/.well-known/acme-challenge`的请求重定向到本地的`/usr/share/nginx/ssl/.well-known/acme-challenge`去.  
 
-当然如果你的nginx没有做其他跳转的话，是直接可以省略上面步骤的，直接将`yourdomain.com.conf`的`webroot-path`设置成`/usr/share/nginx/html`即可.  
+当然如果你的nginx没有做其他跳转的话,是直接可以省略上面步骤的,直接将`yourdomain.com.conf`的`webroot-path`设置成`/usr/share/nginx/html`即可.  
 
 **5、执行证书自动化生成命令**  
 
@@ -119,13 +119,13 @@ IMPORTANT NOTES:
 
 说明证书已经申请成功了.证书以及私钥都已经放在`/etc/letsencrypt/live/yourdomain.com`目录下.  
 
-**6、配置nginx加入SSL证书**  
+## 配置nginx加入SSL证书  
 
-访问:[Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)生成参考配置文件。
+访问:[Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)生成参考配置文件.  
 
 ![ssl-1](http://rustic.img-cn-qingdao.aliyuncs.com/ssl/ssl-1.png@888w)  
 
-将配置文件复制到你的nginx配置文件中，并修改其中的配置的证书路径:
+将配置文件复制到你的nginx配置文件中,并修改其中的配置的证书路径:  
 
 ```  
 server {
@@ -181,45 +181,54 @@ server {
 }
 ```  
 
-如以上，我将`ssl_certificate`和`ssl_certificate_key`的路径改成了上面生成的文件路径，其中`ssl_dhparam`需要另外生成,这个文件不针对某一个域名，所以可以针对某一个nginx生成一个就好，不需要对不同的域名配置。执行命令:
+如以上,我将`ssl_certificate`和`ssl_certificate_key`的路径改成了上面生成的文件路径,其中`ssl_dhparam`需要另外生成,这个文件不针对某一个域名,所以可以针对某一个nginx生成一个就好,不需要对不同的域名配置.执行命令:  
 
 ```  
 [root@iZwz92us1dza0axtrwza0bZ conf.d]# mkdir /etc/nginx/ssl
 [root@iZwz92us1dza0axtrwza0bZ conf.d]# openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
 ```  
 
-然后将`ssl_dhparam`的路径设置成`/etc/nginx/ssl/dhparam.pem`就好。  
- `ssl_trusted_certificate`我这里没有设置，可以直接去掉就好。  
-接着就是设置`resolver`了，这里指定的是你的域名DNS解析服务器，我的域名解析服务器是阿里云的，直接在域名管理控制台找到设置便可。  
-最后就是将自己之前设置的自定义路径转发放在后面便可。这里，我们的ssl认证就基本完成了。
+然后将`ssl_dhparam`的路径设置成`/etc/nginx/ssl/dhparam.pem`就好.  
+ `ssl_trusted_certificate`我这里没有设置,可以直接去掉就好.  
+接着就是设置`resolver`了,这里指定的是你的域名DNS解析服务器,我的域名解析服务器是阿里云的,直接在域名管理控制台找到设置便可.  
+
+
+最后就是将自己之前设置的自定义路径转发放在后面.到这里,我们的ssl认证就基本完成了.  
 重新加载nginx配置文件:  
+
 ```  
 [root@iZwz92us1dza0axtrwza0bZ conf.d]# service nginx reload
 ```  
-打开浏览器访问域名，看看是不是已经加上小绿锁了。  
+
+打开浏览器访问域名,看看是不是已经加上小绿锁了.  
 
 ![ssl-2](http://rustic.img-cn-qingdao.aliyuncs.com/ssl/ssl-2.png)  
 
-**7、测试服务器SSL安全性**  
+## 测试服务器SSL安全性  
 
-访问:[Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html)查看证书安全等级。  
+访问:[Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html)查看证书安全等级.  
 
 ![ssl-3](http://rustic.img-cn-qingdao.aliyuncs.com/ssl/ssl-3.png)  
 
 ## 自动化定期更新证书  
 
-由于`Let's Encrypt`的免费证书有效期自由90天，所以我们需要定期去重新生成证书,`Let's Encrypt`有很方便的定期重新生成证书的脚本，我们只要调用系统定时器按时更新即可。  
-在centos下，我们可以增加`crontab`定时器来更新证书，执行命令:  
+由于`Let's Encrypt`的免费证书有效期自由90天,所以我们需要定期去重新生成证书,`Let's Encrypt`有很方便的定期重新生成证书的脚本,我们只要调用系统定时器按时更新即可.  
+
+在centos下,我们可以增加`crontab`定时器来更新证书,执行命令:  
+
 ```  
 [root@iZwz92us1dza0axtrwza0bZ conf.d]# crontab -u root -e
 ```  
+
 编辑该用户下的定时任务:  
+
 ```  
 0 0 1 * * /usr/bin/letsencrypt renew
 ```  
-每个月1号执行命令`/usr/bin/letsencrypt renew`更新证书。  
+
+每个月1号执行命令`/usr/bin/letsencrypt renew`更新证书.  
 crontab定时器参考:<http://www.ha97.com/910.html>  
 
-好了，到这里我们就已经完成了网站HTTPS的升级了。好好享受小绿锁吧～
+好了,到这里我们就已经完成了网站HTTPS的升级了.好好享受小绿锁吧～
 
 ## 感谢
