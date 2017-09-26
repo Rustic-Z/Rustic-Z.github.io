@@ -94,3 +94,10 @@ grep -n -A 100 -B 100 "18858568688" catalina.out | more
 ```shell  
 netstat -anp|grep 9217
 ```  
+
+批量删除远程分支:  
+
+```shell
+git branch -r| awk -F '[/]' '/201707/{printf "%s\n",$2}' | awk '!/branch-etc/{printf "%s\n",$1}' | xargs -I {} git push origin :{}
+```  
+`awk`用`/`做为分隔符切分`git branch -r`的远程分支结果，接着`awk`过滤掉不需要删除的分支`branch-etc`，最后用`xargs`将每行的参数替换成字符串`{}`，并逐行执行后面的`git push origin :{}`。
