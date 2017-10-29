@@ -1,3 +1,15 @@
+---
+title: linux常用易忘命令合集
+tagline: ""
+last_updated: ""
+category : linux
+layout: post
+tags : [linux]
+published: true
+description: ""
+---
+{% include JB/setup %}
+
 ## 杂记
 
 &emsp;&emsp;不知不觉来到XD已经有10个月了，离毕业也已经一年半。好像也过了那个可以用青雉掩饰无知的阶段了，越往后成长也就越倍感压力，一个阶段有一个阶段的目标，一个阶段也有一个阶段评判高低的标准，没有达成就会恐慌。心态不够成熟。神情还不够淡定，总觉得自己前进的速度稍有怠慢就会被行业淘汰，从而游走于满足挣钱糊口的状态。有时候操之过急，总会干出那么些剑走偏锋的事。  
