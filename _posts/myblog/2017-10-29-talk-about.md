@@ -1,5 +1,5 @@
 ---
-title: 杂技
+title: 杂记
 tagline: ""
 last_updated: ""
 category : life
