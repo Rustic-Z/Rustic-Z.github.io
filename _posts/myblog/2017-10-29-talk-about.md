@@ -1,10 +1,10 @@
 ---
-title: linux常用易忘命令合集
+title: 杂技
 tagline: ""
 last_updated: ""
-category : linux
+category : life
 layout: post
-tags : [linux]
+tags : [life]
 published: true
 description: ""
 ---
