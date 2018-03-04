@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /root/rustic-z.github.io/
 git pull origin master
 echo "pull code on github..."
 sleep 5
@@ -11,4 +10,4 @@ for i in ${tid[@]};do
     sleep 5
 done
 rm -rf _site/*
-jekyll serve -H 114.215.83.238 -B
+jekyll serve -H 35.194.193.193 -B
