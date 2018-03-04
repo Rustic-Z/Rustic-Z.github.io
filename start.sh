@@ -10,4 +10,4 @@ for i in ${tid[@]};do
     sleep 5
 done
 rm -rf _site/*
-jekyll serve -H 35.194.193.193 -B
+jekyll serve -H 127.0.0.1 -B
